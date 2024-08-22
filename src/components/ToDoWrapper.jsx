@@ -3,7 +3,7 @@ import Task from './Task'
 import TaskForm from './TaskForm'
 import EditTaskModal from './EditTaskModal'
 import Swal from 'sweetalert2'
-import { toast } from 'sonner' // Import toast from Sonner
+import { toast } from 'sonner' 
 
 const ToDoWrapper = () => {
     const [tasks, setTasks] = useState([
@@ -37,13 +37,13 @@ const ToDoWrapper = () => {
 
     const handleAddTask = (newTask) => {
         setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
-        toast.success('Task added successfully!'); // Show toast on task addition
+        toast.success('Task added successfully!');  
     }
 
     const handleUpdateTask = (updatedTask) => {
         setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
-        setTaskToEdit(null); // Close modal after update
-        toast.success('Task updated successfully!'); // Show toast on task update
+        setTaskToEdit(null);  
+        toast.success('Task updated successfully!'); 
     }
 
     const handleDeleteTask = async (taskId) => {
@@ -58,7 +58,7 @@ const ToDoWrapper = () => {
         });
         if (result.isConfirmed) {
             setTasks(tasks.filter(task => task.id !== taskId));
-            toast.success('Task deleted successfully!'); // Show toast on task deletion
+            toast.success('Task deleted successfully!');  
             Swal.fire({
                 title: 'Deleted!',
                 text: 'Your task has been deleted.',
@@ -80,7 +80,7 @@ const ToDoWrapper = () => {
         });
         if (result.isConfirmed) {
             setTasks([]);
-            toast.success('All tasks deleted successfully!'); // Show toast on delete all tasks
+            toast.success('All tasks deleted successfully!');  
             Swal.fire({
                 title: 'Deleted!',
                 text: 'All tasks have been deleted.',
@@ -96,9 +96,11 @@ const ToDoWrapper = () => {
     );
 
     return (
-        <div className="p-6">
-            <header className="bg-black text-white py-4 mb-6 rounded shadow-md">
-                <h1 className="text-3xl font-bold text-center">ToDo App</h1>
+        <div className="flex flex-col min-h-screen p-6">
+            <header className="bg-black text-white py-4 mb-6 rounded shadow-md w-full max-w-2xl mx-auto">
+
+                <h1 className="text-2xl font-bold text-center">ToDo App</h1>
+
             </header>
 
             {/* task form */}
@@ -107,12 +109,11 @@ const ToDoWrapper = () => {
             {/* search */}
             <input
                 type="text"
-                className="mb-4 p-2 border border-gray-400 rounded w-full"
+                className="mb-4 p-2 border border-gray-400 rounded w-full max-w-md mx-auto"
                 placeholder="Search tasks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
-
             {/* tasks container */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredTasks.map(task => (
@@ -133,7 +134,8 @@ const ToDoWrapper = () => {
                     onClose={() => setTaskToEdit(null)}
                 />
             )}
-            <footer className="bg-black text-white py-4 mt-6 rounded shadow-md text-center">
+ 
+            <footer className="mt-10 bg-black text-white py-4 mt-auto rounded shadow-md text-center  w-full max-w-2xl mx-auto">
                 <p className="text-sm">© 2024 Eli Bautista</p>
             </footer>
         </div>

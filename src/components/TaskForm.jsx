@@ -14,20 +14,20 @@ const TaskForm = ({ onAddTask, onDeleteAll }) => {
     }
 
     return (
-        <div className="mb-6">
-            <form onSubmit={handleSubmit} className="mb-4">
+        <div className="mb-6 max-w-4xl mx-auto">
+            <form onSubmit={handleSubmit} className="mb-4 p-4 border border-gray-300 rounded">
                 <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Task title"
-                    className="mb-2 p-2 border border-gray-400  rounded w-full"
+                    className="mb-2 p-2 border border-gray-400 rounded w-full"
                 />
                 <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Task content"
-                    className="mb-2 p-2 border border-gray-400  border border-gray-400 -gray-400 rounded w-full"
+                    className="mb-2 p-2 border border-gray-400 rounded w-full"
                 />
                 <div className="flex space-x-2">
                     <button
@@ -37,6 +37,7 @@ const TaskForm = ({ onAddTask, onDeleteAll }) => {
                         Add Task
                     </button>
                     <button
+                        type="button"
                         onClick={onDeleteAll}
                         className="px-4 py-2 bg-black text-white rounded"
                     >
