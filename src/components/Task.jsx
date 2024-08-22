@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { FaCalendar, FaEdit, FaTrash } from "react-icons/fa";
 
 const Task = ({ task, onDelete, onUpdate }) => {
     const [completed, setCompleted] = useState(false);
-    
-    // Format Date
+     
     const formattedDate = new Date(task.created_at).toLocaleDateString("en-US", {
         month: "long",
         day: "numeric",
@@ -13,7 +12,7 @@ const Task = ({ task, onDelete, onUpdate }) => {
 
     return (
         <div 
-            className="p-4 bg-white border border-gray-400  rounded-md shadow cursor-pointer"
+            className="p-4 bg-white border border-gray-400 rounded-md shadow cursor-pointer"
             onClick={() => setCompleted(!completed)}
         >
             <h5 
@@ -27,8 +26,8 @@ const Task = ({ task, onDelete, onUpdate }) => {
                 {task.content}
             </p>
             <div className="flex items-center mb-4 text-black-500">
-                <FaCalendar className={`mr-2 h-4 w-4 ${completed ? 'text-gray-400' : 'text-black-600'}`}/>
-                <span className={`${completed ? 'text-gray-400' : 'text-black-600'}`}>{formattedDate}</span>
+                <FaCalendar className={`mr-2 h-3 w-3 ${completed ? 'text-gray-400' : 'text-black-600'}`}/>
+                <span className={`text-xs ${completed ? 'text-gray-400' : 'text-black-600'}`}>{formattedDate}</span>
             </div>
             <div className="flex justify-end">
                 <button className={`mr-2 ${completed ? 'line-through text-gray-400' : 'text-black-600'}`} onClick={e => { e.stopPropagation(); onUpdate(); }}>
@@ -42,4 +41,4 @@ const Task = ({ task, onDelete, onUpdate }) => {
     )
 }
 
-export default Task
+export default Task;
